@@ -1,5 +1,6 @@
 package at.raiffeisenbank.customer.boundary;
 
+import at.raiffeisenbank.customer.entity.Customer;
 import java.net.URI;
 import javax.validation.constraints.Size;
 import javax.ws.rs.GET;
@@ -24,8 +25,9 @@ public class CustomersResource {
 
     @GET
     @Path("{id}")
-    public String customer(@PathParam("id") long id) {
-        return "duke with: " + id;
+    public Response customer(@PathParam("id") long id) {
+        return Response.ok(new Customer(id, "duke", true)).
+                header("x-status", "gold").build();
     }
 
     @POST
