@@ -1,5 +1,6 @@
 package at.raiffeisenbank.customer.entity;
 
+import javax.persistence.Entity;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -8,6 +9,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  *
  * @author airhacks.com
  */
+@Entity
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement
 public class Customer {
