@@ -2,6 +2,8 @@ package at.raiffeisenbank.customer.boundary;
 
 import at.raiffeisenbank.customer.entity.Customer;
 import java.net.URI;
+import javax.json.Json;
+import javax.json.JsonArray;
 import javax.validation.constraints.Size;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -19,8 +21,8 @@ import javax.ws.rs.core.UriInfo;
 public class CustomersResource {
 
     @GET
-    public String all() {
-        return "duke,nuke";
+    public JsonArray all() {
+        return Json.createArrayBuilder().add("duke").add("hugo").build();
     }
 
     @GET
