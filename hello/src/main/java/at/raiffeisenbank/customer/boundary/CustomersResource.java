@@ -1,7 +1,8 @@
 package at.raiffeisenbank.customer.boundary;
 
-import at.raiffeisenbank.customer.entity.Customer;
 import java.net.URI;
+import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.json.Json;
 import javax.json.JsonArray;
 import javax.validation.constraints.Size;
@@ -17,8 +18,12 @@ import javax.ws.rs.core.UriInfo;
  *
  * @author airhacks.com
  */
+@Stateless
 @Path("customers")
 public class CustomersResource {
+
+    @Inject
+    CustomerManager cm;
 
     @GET
     public JsonArray all() {
@@ -28,7 +33,7 @@ public class CustomersResource {
     @GET
     @Path("{id}")
     public Response customer(@PathParam("id") long id) {
-        return Response.ok(new Customer(id, "duke", true)).
+        return Response.ok(cm.get(id, "hugo", true)).
                 header("x-status", "gold").build();
     }
 
