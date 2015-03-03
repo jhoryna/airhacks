@@ -1,6 +1,8 @@
 package at.raiffeisenbank.customer.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -12,8 +14,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement
+@NamedQuery(name = "all", query = "SELECT c FROM Customer c")
 public class Customer {
 
+    @Id
     private long id;
     private String name;
     private boolean active;
