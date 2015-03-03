@@ -1,5 +1,6 @@
 package at.raiffeisenbank.customer.boundary;
 
+import at.raiffeisenbank.customer.entity.Customer;
 import java.net.URI;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -7,6 +8,7 @@ import javax.json.Json;
 import javax.json.JsonArray;
 import javax.validation.constraints.Size;
 import javax.ws.rs.GET;
+import javax.ws.rs.OPTIONS;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -35,6 +37,11 @@ public class CustomersResource {
     public Response customer(@PathParam("id") long id) {
         return Response.ok(cm.get(id, "hugo", true)).
                 header("x-status", "gold").build();
+    }
+
+    @OPTIONS
+    public Customer sample() {
+        return new Customer(42, "sample", true);
     }
 
     @POST
