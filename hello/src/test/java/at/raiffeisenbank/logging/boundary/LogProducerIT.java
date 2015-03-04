@@ -3,6 +3,7 @@ package at.raiffeisenbank.logging.boundary;
 import javax.inject.Inject;
 import static org.hamcrest.CoreMatchers.is;
 import org.jboss.arquillian.container.test.api.Deployment;
+import org.jboss.arquillian.container.test.api.OperateOnDeployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
@@ -21,7 +22,7 @@ public class LogProducerIT {
     @Inject
     LoggerInjectionSupport cut;
 
-    @Deployment
+    @Deployment(name = "hugo")
     public static WebArchive create() {
         return ShrinkWrap.create(WebArchive.class).
                 addClasses(LogProducer.class, LoggerInjectionSupport.class).
@@ -29,6 +30,7 @@ public class LogProducerIT {
     }
 
     @Test
+    @OperateOnDeployment("hugo")
     public void logConfigured() {
         String expected = cut.getClass().getName();
         String actual = cut.getLOG().getName();
