@@ -1,6 +1,8 @@
 package at.raiffeisenbank.sample;
 
+import java.util.function.Consumer;
 import javax.ejb.Stateless;
+import javax.enterprise.event.Observes;
 
 /**
  *
@@ -9,8 +11,8 @@ import javax.ejb.Stateless;
 @Stateless
 public class Messenger {
 
-    public String hello() {
-        return "good morning";
+    public void hello(@Observes Consumer<String> sink) {
+        sink.accept("hello disfunctional morning");
     }
 
 }
