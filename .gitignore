@@ -17,3 +17,5 @@ target/
 /javaeetesting/workshops/
 /javaeetesting/derby.log
 /automation/nbproject/private/
+/hello/workshops/
+/hello/derby.log
