@@ -1,6 +1,10 @@
 package at.raiffeisenbank;
 
 import java.util.function.Supplier;
+import javax.script.Invocable;
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import org.junit.Test;
@@ -44,4 +48,21 @@ public class FunctionalTest {
     public void heavyLifting() {
         System.out.println("Very slow method");
     }
+
+    @Test
+    public void asyncJs() throws ScriptException {
+        Runnable run = get();
+        run.run();
+    }
+
+    public Runnable get() throws ScriptException {
+        ScriptEngineManager sem = new ScriptEngineManager();
+        ScriptEngine engine = sem.getEngineByName("javascript");
+        Invocable i = (Invocable) engine;
+
+        engine.eval("function run(){ print('running in js');}");
+        return i.getInterface(Runnable.class);
+
+    }
+
 }
