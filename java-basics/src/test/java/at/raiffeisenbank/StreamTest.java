@@ -2,6 +2,9 @@ package at.raiffeisenbank;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 import org.junit.Test;
 
 /**
@@ -23,6 +26,11 @@ public class StreamTest {
                 average().
                 orElse(0);
         System.out.println("averageAge = " + averageAge);
+
+        List<Customer> sCustomers = customers.stream().
+                filter(c -> c.getName().startsWith("s")).
+                collect(Collectors.toList());
+        assertThat(sCustomers.size(), is(1));
     }
 
 }
