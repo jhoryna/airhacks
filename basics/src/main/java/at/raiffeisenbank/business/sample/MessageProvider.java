@@ -1,7 +1,7 @@
-package at.raiffeisenbank.sample;
+package at.raiffeisenbank.business.sample;
 
-import at.raiffeisenbank.logger.Journal;
-import at.raiffeisenbank.logger.Level;
+import at.raiffeisenbank.business.logger.Journal;
+import at.raiffeisenbank.business.logger.Level;
 import java.util.function.Consumer;
 import javax.inject.Inject;
 

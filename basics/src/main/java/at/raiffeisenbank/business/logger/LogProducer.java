@@ -1,4 +1,4 @@
-package at.raiffeisenbank.logger;
+package at.raiffeisenbank.business.logger;
 
 import java.util.function.Consumer;
 import java.util.logging.Logger;

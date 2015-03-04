@@ -1,4 +1,4 @@
-package at.raiffeisenbank;
+package at.raiffeisenbank.business;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;

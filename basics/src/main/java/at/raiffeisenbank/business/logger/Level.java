@@ -1,4 +1,4 @@
-package at.raiffeisenbank.logger;
+package at.raiffeisenbank.business.logger;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -13,6 +13,12 @@ import javax.inject.Qualifier;
 @Qualifier
 @Target({ElementType.FIELD, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Journal {
+public @interface Level {
+
+    Name value();
+
+    enum Name {
+        DEBUG, SEVERE;
+    }
 
 }

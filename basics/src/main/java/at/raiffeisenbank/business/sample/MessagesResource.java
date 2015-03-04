@@ -1,4 +1,4 @@
-package at.raiffeisenbank.sample;
+package at.raiffeisenbank.business.sample;
 
 import java.util.function.Consumer;
 import javax.enterprise.event.Event;

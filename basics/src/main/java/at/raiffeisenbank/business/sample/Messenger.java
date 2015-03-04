@@ -1,4 +1,4 @@
-package at.raiffeisenbank.sample;
+package at.raiffeisenbank.business.sample;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
@@ -25,6 +25,10 @@ public class Messenger {
     public void hello(@Observes Consumer<String> sink) {
         Supplier<String> supplier = provider::message;
         CompletableFuture.supplyAsync(supplier, mes).thenAccept(sink);
+    }
+
+    public String getMessage() {
+        return provider.message();
     }
 
 }
